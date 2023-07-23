@@ -9,14 +9,14 @@ class person
 		int age;
 		void personal()
 		{
-			cout<<"\n\nEnter your Name : ";
-			cin.ignore();
+			cout<<"Enter your Name : ";
+//			cin.ignore();
 			getline(cin,name);
 			cout<<"Enter your Age : ";
 			cin>> age;
 		}
 };
-class student : public person
+class student
 {
 	public :
 		int percentage;
@@ -25,18 +25,12 @@ class student : public person
 			cout<<"\nEnter your Percentage : ";
 			cin>>percentage;
 		}
-		void display()
-		{
-			cout<<"\n\nName is : "<<name<<endl
-			<<"Your age is : "<<age<<" years "<<endl
-			<<"Your Percentage is : "<<percentage<<" %"<<endl;
-		}
 };
-class teacher : public person 
+class teacher : public person, public student 
 {
 	public :
 		double salary;
-		void input()
+		void sal()
 		{
 			cout<<"\nEnter your Salary per year : ";
 			cin>>salary;
@@ -45,28 +39,16 @@ class teacher : public person
 		{
 			cout<<"\n\nName is : "<<name<<endl
 			<<"Your age is : "<<age<<" years "<<endl
+			<<"Your Percentage is : "<<percentage<<endl
 			<<"Your Salary is : "<<salary<<" /- per year"<<endl;
 		}
 };
 
 int main()
 {
-	int choice;
-	cout<<"Please select your role : "<<endl;
-	cout<<"1. Teacher \n2. Student "<<endl;
-	cin>>choice;
-	if(choice == 1)
-	{
-		teacher t;
-		t.personal();
-		t.input();
-		t.display();
-	}
-	else
-	{
-		student s;
-		s.personal();
-		s.input();
-		s.display();
-	}
+	teacher t;
+	t.personal();
+	t.input();
+	t.sal();
+	t.display();
 }
